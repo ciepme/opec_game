@@ -11,7 +11,7 @@ function overall_profit = overall_profit_calc(day_1, day_2, day_3, day_4, day_5,
     daily_prod = [day_1 day_2 day_3 day_4 day_5 day_6 day_7 day_8 day_9 day_10 day_11 day_12];
 
     %calc
-    production_profit_per_day = R(daily_prod,0,0) - (daily_prod - marginal_cost);
+    production_profit_per_day = R(daily_prod,0,0) - (daily_prod .* marginal_cost);
     production_profit_vested = sum(production_profit_per_day .* interest_table);
     leftover_profit = (endgame_bbl - marginal_cost) .* (reserve - sum(daily_prod));
     overall_profit = production_profit_vested + leftover_profit;
